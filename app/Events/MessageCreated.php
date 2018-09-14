@@ -3,9 +3,7 @@
 namespace App\Events;
 
 use App\Models\Message;
-use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -32,9 +30,7 @@ class MessageCreated implements ShouldBroadcast
         $this->message->load(['user']);
 
         return [
-            'message' => array_merge($this->message->toArray(), [
-                'selfMessage' => false
-            ])
+            'message' => $this->message->toArray(),
         ];
     }
 

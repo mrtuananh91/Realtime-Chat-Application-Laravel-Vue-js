@@ -27,7 +27,7 @@ class MessageController extends Controller
     public function store(Request $request)
     {
         $message = Message::create([
-            'conversation_id' => 1,
+            'conversation_id' => $request->conversation_id,
             'user_id' => Auth::user()->id,
             'body' => $request->body,
             'type' => $request->type,
